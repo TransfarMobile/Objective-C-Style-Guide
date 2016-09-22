@@ -44,48 +44,39 @@
 <a name="code-organization"></a>
 ## 代码组织
 在函数分组和protocol/delegate实现文件中，使用`#pragma mark -`来分类方法，要遵循以下一般结构:
-
-```objc
-#pragma mark - Lifecycle
+ 
+```  
+objc
+ #pragma mark - Lifecycle 
 - (void)dealloc {}
 - (instancetype)init {}
 - (void)viewDidLoad {}
 - (void)viewWillAppear:(BOOL)animated {}
 - (void)didReceiveMemoryWarning {}
 
-#pragma mark - UITableViewDataSource
-#pragma mark - CustomDelegate
+ #pragma mark - UITableViewDataSource
+ 
+ #pragma mark - CustomDelegate
 
-#pragma mark - Public
+ #pragma mark - Public
+   外界调用的公共方法
+ #pragma mark - Private
+   自定义，内部手动调用的方法
+ #pragma mark - Event Response
+   1.IBAction.
+   2.UITapGestureRecognizer.
+   3.NSNotification.
+   4.NSTimer.
 
-- (void)publicMethod {}
+ #pragma mark - Getter
 
-#pragma mark - Private
+ #pragma mark - Setter
 
-- (void)privateMethod {}
+ #pragma mark - NSCopying
 
-#pragma mark - Event Response
-```
-- (IBAction)submitData:(id)sender {}
-- (void)handleTap:(UIGesgure) {}  //UIGestureRecognizer
--                                 //NSTimer
--                                 //NSNotificationCenter
-
-```
-
-#pragma mark - Getter
-- (id)customProperty {}
-#pragma mark - Setter
-
-- (void)setCustomProperty:(id)value {}
-
-#pragma mark - NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {}
-
-#pragma mark - NSObject
-
-- (NSString *)description {}
+ #pragma mark - NSObject
+ - (NSString *)description {}  
+ 
 ```
 
 <a name="language"></a>
