@@ -448,7 +448,6 @@ CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
 
 <a name="constants"></a>
 ## 常量
-
 使用`const`而不是`#define`
 
 **推荐:**
