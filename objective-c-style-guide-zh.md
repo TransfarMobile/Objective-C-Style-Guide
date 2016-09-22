@@ -464,8 +464,8 @@ static CGFloat const MGSImageThumbnailHeight = 50.0;
 
 ```    
 objc
-#define CompanyName @"meigesir.com"
-#define thumbnailHeight 2  
+ #define CompanyName @"meigesir.com"
+ #define thumbnailHeight 2  
 
 ```
 
@@ -497,8 +497,9 @@ enum GlobalConstants {
 ```
 
 <a name="image-naming"></a>
-#图片命名
-驼峰命名法；命名规范：用途+使用者类或者属性名+颜色+状态
+##图片命名
+驼峰命名法；  
+命名规范：用途+使用者类或者属性名+颜色+状态  
 For example:  
 
 ```  
@@ -583,7 +584,7 @@ if (isAwesome == true) {} // Never do this.
     //Do something important
   }
 }
-`
+```
 
 <a name="singletons"></a>
 ## 单例模式
@@ -604,8 +605,6 @@ objc
 }
 ```
 
-这会防止:[possible and sometimes prolific crashes](http://cocoasamurai.blogspot.com/2011/04/singletons-your-doing-them-wrong.html)。``
-
 <a name="xcode-project"></a>
 ## Xcode 工程
 
@@ -615,7 +614,6 @@ objc
 
 ## 其它Objective-C编码规范
 
-如果我们的代码规范不符合你的品位，可以看一些其它的编码规范:
 
 * [Robots & Pencils](https://github.com/RobotsAndPencils/objective-c-style-guide)
 * [New York Times](https://github.com/NYTimes/objective-c-style-guide)
