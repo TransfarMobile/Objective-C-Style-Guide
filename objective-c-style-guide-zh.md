@@ -23,6 +23,7 @@
 * [错误处理](#error-handling)
 * [方法](#methods)
 * [变量](#variables)
+* [私有属性](#private-properties)
 * [属性特性](#property-attributes)
 * [命名](#naming)
 * [注释](#comments)
@@ -30,7 +31,6 @@
 * [CGRect函数](#cgrect-functions)
 * [常量](#constants)
 * [枚举类型](#enumerated-types)
-* [私有属性](#private-properties)
 * [图片命名](#image-naming)
 * [布尔值](#booleans)
 * [Init方法](#init-methods)
@@ -240,24 +240,31 @@ if (error) {
 <a name="variables"></a>
 ## 变量
 
-1、变量尽量以描述性的方式来命名。  
-2、单个字符的变量命名应该尽量避免，除了在`for()`循环。  
-3、星号表示变量是指针。例如: `NSString *text`， 既不是 `NSString* text` 也不是 `NSString * text`,除了[常量](#constants)的情形。  
-4、不要在类的实现文件中使用私有实例变量，使用私有属性代替实例变量，来保持代码的一致性。  
-5、不要直接访问实例变量(_variable, 变量名前面有下划线)，除了在初始化方法(`init`, `initWithCoder:`, 其它…),`dealloc` 方法和自定义的 `setters` 和 `getters`中。统一使用点语法访问。  
-6、变量初始化，要写在自定义`getter`方法中懒加载。不要将初始化变量的代码，散乱的写在例如UIViewController的`viewDidLoad`，达到更好的可读性，封装性，规范性。
-
-**推荐:**
+1、命名：
+   变量尽量以描述性的方式来命名，单个字符的变量命名应该尽量避免，除了在`for()`循环。    
+2、格式：
+   星号表示变量是指针。例如: `NSString *text`， 既不是 `NSString* text` 也不是 `NSString * text`,除了[常量](#constants)的情形。  
+3、声明：
+   不允许直接声明变量，包括在.h文件和.m文件中，而是使用属性自动合成变量。  
+   **推荐:**
 
 ```
+
 objc
 @interface MGSTutorial : NSObject
 
 @property (strong, nonatomic) NSString *tutorialName;
 
-@end  
-```
+@end
 
+@interface MGSWebViewController ()
+
+@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) UIToolbar *toolbar;
+
+@end
+  
+```
 **不推荐:**
 
 ```
@@ -265,10 +272,21 @@ objc
 @interface MGSTutorial : NSObject {
   NSString *tutorialName;
 }
+
+@implementation MGSTutorial : NSObject {
+  NSString *tutorialName;
+}
+
 ```
 
+4、初始化：
+   要写在自定义`getter`方法中懒加载。不要将初始化变量的代码，散乱的写在例如UIViewController的`viewDidLoad`，达到更好的可读性，封装性，规范性。
+   
+5、访问：
+  不要直接访问实例变量(_variable, 变量名前面有下划线)，除了在初始化方法(`init`, `initWithCoder:`, 其它…),`dealloc` 方法和自定义的 `setters` 和 `getters`中。统一使用点语法访问。  
+
 <a name="property-attributes"></a>
-## 属性特性
+## 属性
 
 属性特性应该显示地罗列出来，有助于新的开发者阅读代码。属性的顺序应该是storage、 atomicity，与在Interface Builder连接UI元素时自动生成代码一致。
 
@@ -478,24 +496,7 @@ enum GlobalConstants {
 };
 ```
 
-<a name="private-properties"></a>
-## 私有属性
-私有属性应该在类的实现文件中的类扩展(匿名类别)中声明。命名类别(比如`MGSPrivate`或`private`)应该从不使用除非是扩展其他类。匿名类别可以使用<headerfile>+Private.h文件命名规则共享/暴露给测试。
-
-**例如：**
-
-```objc
-@interface MGSWebViewController ()
-
-@property (strong, nonatomic) UIWebView *webView;
-@property (strong, nonatomic) UIToolbar *toolbar;
-
-@end
-```
 <a name="image-naming"></a>
-
-
-<a name="case-statements"></a>
 #图片命名
 驼峰命名法；命名规范：用途+使用者类或者属性名+颜色+状态
 For example:  
