@@ -54,14 +54,16 @@ objc
 - (void)viewWillAppear:(BOOL)animated {}
 - (void)didReceiveMemoryWarning {}
 
- #pragma mark - UITableViewDataSource
+ #pragma mark - 系统回调方法 UITableViewDataSource
  
  #pragma mark - CustomDelegate
 
  #pragma mark - Public
    外界调用的公共方法
+   
  #pragma mark - Private
    自定义，内部手动调用的方法
+   
  #pragma mark - Event Response
    1.IBAction.
    2.UITapGestureRecognizer.
