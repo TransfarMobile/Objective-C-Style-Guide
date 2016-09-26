@@ -23,7 +23,6 @@
 * [错误处理](#error-handling)
 * [方法](#methods)
 * [变量](#variables)
-* [私有属性](#private-properties)
 * [属性特性](#property-attributes)
 * [命名](#naming)
 * [注释](#comments)
@@ -288,20 +287,17 @@ objc
 <a name="property-attributes"></a>
 ## 属性
 
-属性特性应该显示地罗列出来，有助于新的开发者阅读代码。属性的顺序应该是storage、 atomicity，与在Interface Builder连接UI元素时自动生成代码一致。
-
-**推荐:**
-
-```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
-```
-
-**不推荐:**
-
+属性特性应该显示地罗列出来，有助于新的开发者阅读代码。属性的顺序应该是atomicity、storage  
+**推荐:**    
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic) NSString *tutorialName;
+```
+
+**不推荐:**  
+```objc
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (strong, nonatomic) NSString *tutorialName;
 ```
 
 可以改变值的属性(例如:NSString)应该使用`copy`，而不是`strong`。
