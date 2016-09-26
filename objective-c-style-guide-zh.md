@@ -119,6 +119,7 @@ UIApplication.sharedApplication.delegate;
 ## 留白
 
 * 缩进使用`space`键
+* `=`两边各留一个空格
 * 方法花括号和其它花括号(`if`/`else`/`switch`/`while` 等.)总是在同一行语句中打开，但在新行中关闭。
 
 **推荐:**
@@ -287,7 +288,7 @@ objc
 <a name="property-attributes"></a>
 ## 属性
 
-属性特性应该显示地罗列出来，有助于新的开发者阅读代码。属性的顺序应该是atomicity、storage  
+* 属性特性应该显示地罗列出来，有助于新的开发者阅读代码。属性的顺序应该是atomicity、storage  
 **推荐:**    
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
@@ -300,7 +301,7 @@ objc
 @property (strong, nonatomic) NSString *tutorialName;
 ```
 
-可以改变值的属性(例如:NSString)应该使用`copy`，而不是`strong`。
+* 具有可变类型的值的属性(例如:NSString)应该使用`copy`，而不是`strong`。
 为什么？即使你声明一个`NSString`的属性，有人可能传入一个`NSMutableString`的实例，然后在你没有注意的情况下修改它。
 
 **推荐:**
@@ -313,8 +314,9 @@ objc
 
 ```objc
 @property (strong, nonatomic) NSString *tutorialName;
-```
+```  
 
+* NSArray NSDictionary根据需求也可以使用copy。但是没有可变类型的对象，比如UIKit框架中的类，严禁使用copy。  
 
 <a name="naming"></a>
 ## 命名
