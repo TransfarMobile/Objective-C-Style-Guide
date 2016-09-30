@@ -22,6 +22,7 @@
 * [三目运算操作](#ternary-operator)
 * [错误处理](#error-handling)
 * [方法](#methods)
+* [协议](#protocol)
 * [变量](#variables)
 * [属性特性](#property-attributes)
 * [命名](#naming)
@@ -35,7 +36,8 @@
 * [Init方法](#init-methods)
 * [类构造器方法](#class-constructor-methods)
 * [黄金路径](#golden-path)
-* [单例模式](#singletons)* 
+* [单例模式](#singletons)
+* [import](#import)
 * [Xcode 工程](#xcode-project)
 
 
@@ -235,7 +237,19 @@ if (error) {
 - (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;
 - (instancetype)initWith:(int)width and:(int)height;  // Never do this.
 ```
-
+<a name="protocol"></a>
+##协议
+每个协议方法的第一个参数应该是发送这个消息的对象本身。  
+1、代码清晰易懂，很容易知道是哪个类的协议方法。  
+2、当使用者对象是多个相同类型实例的delegate时，如一个VC引用多个UITableView，容易区分是哪个UITableView实例的协议方法。  
+**推荐**  
+```
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+```  
+**不推荐**  
+```
+- (void)didSelectTableRowAtIndexPath:(NSIndexPath *)indexPath;
+```
 
 <a name="variables"></a>
 ## 变量
@@ -600,6 +614,23 @@ objc
 
   return sharedInstance;
 }
+```
+
+<a name="import"></a>
+##import
+当有多个import statement，statements必须分组。可以加组注释。  
+framework使用`@import`.
+
+```
+// Frameworks
+@import QuartzCore;
+
+// Models
+ #import "NYTUser.h"
+
+// Views
+ #import "NYTButton.h"
+ #import "NYTUserView.h"
 ```
 
 <a name="xcode-project"></a>
