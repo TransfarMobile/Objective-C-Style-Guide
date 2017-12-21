@@ -1,4 +1,4 @@
-#Objective-C 代码规范
+#Objective-C 代码和iOS开发规范
 
 ## 介绍
 
